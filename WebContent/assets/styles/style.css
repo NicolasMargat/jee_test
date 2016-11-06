@@ -1,0 +1,87 @@
+/* CSS document */
+
+/* Panel de couleur
+#404040 anthracite
+#024959 bleu foncé
+#037E8C bleu clair
+#F2EFDC blanc
+#F24C27 rouge
+*/
+
+body, p, h1, menu, div, img {
+	margin: 0;
+	Padding: 0;
+	border: 0;
+}
+
+body {
+	background-color: #F2EFDC;
+}
+
+::-moz-selection {
+	background-color: #037E8C;
+	color: #fff;
+}
+
+::selection {
+	background-color: #037E8C;
+	color: #fff;
+}
+
+.main {
+  width: 80%;
+	margin: auto;
+}
+
+.main_wrapper {
+  width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+#entete {
+	/*background-color: #453a57;*/
+	background-image: url('../img/banniere.jpg');
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	height: 120px;
+	position: relative;
+}
+
+#entete h1{
+	color: #fff;
+	font-size: 6em;
+	text-align: center;
+}
+
+#pied_page {
+	background-color: #404040;
+	position: static;
+	bottom: 0;
+	width: 100%;
+	height: 120px;
+	padding-top: 10px;
+}
+
+#pied_page img{
+	/*position: absolute;*/
+	left: 0;
+	height: 60px;
+	margin-left: 10px;
+}
+
+#pied_page div{
+	/*background-color: #354;*/
+	width: 100%;
+	height: auto;
+	position: static;
+	bottom: 0;
+	text-align: center;
+	color: #F24C27;
+}
+
+#pied_page div span{
+	font-size: 0.8em;
+}

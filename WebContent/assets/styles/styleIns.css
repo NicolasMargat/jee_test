@@ -1,0 +1,88 @@
+/* CSS document */
+
+body {
+  height: 100%;
+}
+
+.main_wrapper {
+  height: 700px;
+}
+
+#inscription {
+  position: relative;
+  background-color: #fafafa;
+  width: 400px;
+  height: auto;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 400px;
+  padding: 15px 0;
+  text-align: center;
+  border: 1px solid #333;
+  border-radius: 5px 15px;
+  box-shadow: 1px 2px 5px 1px #333;
+}
+
+#connexion h2, #inscription h2 {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: 2em;
+  text-align: center;
+}
+
+#sinscrire {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+}
+
+.formIns label, .formCnx label {
+	display: block;
+	width: 100px;
+	float: left;
+  margin: 15px 0 0 10px;
+  position: relative;
+  text-align: left;
+}
+
+.formIns input, .formCnx input {
+	margin: 5px 0;
+}
+
+.btnEnvoyer {
+  width: auto;
+  height: 30px;
+  margin: auto;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0px #000;
+  background-color: #026aa7;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #fff;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.btnEnvoyer:hover {
+  background-color: #0f76b3;
+}
+
+.btnEnvoyer:active {
+  background-color: #1f86c3;
+  box-shadow: 1px 1px 0px #000;
+}
+
+/* Style d'événement */
+.txtDefaut {
+  width: 250px;
+  padding: 10px 5px;
+  border: 1px solid #ccc;
+}
+.textBox {
+  padding: 10px 5px;
+  border: 1px solid red;
+}

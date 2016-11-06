@@ -1,0 +1,54 @@
+/* CSS document */
+
+p {
+	text-indent: 2em;
+}
+
+.news {
+	margin: 10px;
+	text-align: justify;
+}
+
+.news::-moz-selection {
+	background-color: #F24C27;
+}
+
+.news::selection {
+	background-color: #F24C27;
+}
+
+.sidebar p::-moz-selection {
+	background-color: #fff;
+	color: #037E8C;
+}
+
+.sidebar p::selection {
+	background-color: #fff;
+	color: #037E8C;
+}
+
+.info {
+	margin: 0 10px 10px 10px;
+	text-align: justify;
+}
+
+.sidebar h3 {
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+
+.sidebar {
+	/*background-color: #df8;*/
+	background-color: #037E8C;
+	border-radius: 15px;
+	border-style: solid;
+	border-color: #000;
+	width: 180px;
+	width-max: 180px;
+	height: 100%;
+	float: right;
+	padding: 8px;
+	margin-left: 20px;
+	margin-right: 10px;
+}
