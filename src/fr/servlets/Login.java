@@ -46,18 +46,13 @@ public class Login extends HttpServlet {
 		if(!login.equals("") && !pwd.equals("")){
 			try {
 				UserDAO udao = new UserDAO();
-				
 				user = udao.get(login, pwd);
-				
-				System.out.println("2 " + user.toString());
-				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		
 		if(user == null) {
-			System.out.println("c'est le mal");
 			response.sendRedirect(request.getContextPath() + "/login");
 		} else {
 //			Cookie monCookie = new Cookie("irc", "POURQUOIIIIIIIIIIIIIII");

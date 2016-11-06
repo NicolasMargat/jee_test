@@ -38,8 +38,6 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String login = request.getParameter("login");
 		String pwd = request.getParameter("pwd");
-
-		System.out.println("login: " + login + " pwd: " + pwd);
 		
 		if(!login.equals("") && !pwd.equals("")){
 			try {

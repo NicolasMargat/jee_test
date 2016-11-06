@@ -82,8 +82,8 @@
       url: url, //URL où envoyer la requête (correspond à l'action d'un form)
       data: {'nom': 'nicolas', 'prenom': 'nicolas'},
       //data: obj, //données envoyées
-      type: type, //Méthode HTTP de la reqête //type de données attendues en retour: xml
-      dataType: 'json',
+      type: type, //Méthode HTTP de la reqête
+      dataType: 'json', //type de données attendues en retour: json
       complete: function(xhr, status){
         console.log("Requête bien envoyée");
       },
@@ -100,8 +100,8 @@
     $.ajax({
       url: url, //URL où envoyer la requête (correspond à l'action d'un form)
       data: obj, //données envoyées
-      type: type, //Méthode HTTP de la reqête //type de données attendues en retour: xml
-      dataType: 'json',
+      type: type, //Méthode HTTP de la reqête
+      dataType: 'json', //type de données attendues en retour: json
       complete: function(xhr, status){
         console.log("Requête bien envoyée");
       },
@@ -116,8 +116,8 @@
     $.ajax({
       url: url, //URL où envoyer la requête (correspond à l'action d'un form)
       data: obj, //données envoyées
-      type: type, //Méthode HTTP de la reqête //type de données attendues en retour: xml
-      dataType: 'json',
+      type: type, //Méthode HTTP de la reqête
+      dataType: 'json', //type de données attendues en retour: json
       complete: function(xhr, status){
         console.log("Requête bien envoyée");
       },

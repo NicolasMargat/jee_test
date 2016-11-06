@@ -1,6 +1,7 @@
 package fr.servlets;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -32,12 +33,23 @@ public class Irc extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession(true).getAttribute("user");
-		System.out.println(user);
+		System.out.println("1 page irc:" + user);
+		MessDAO mdao = new MessDAO();
+		ResultSet result = null;
 		
 		if(user == null) {
-			System.out.println("déviation");
+			System.out.println("2 page irc: déviation");
 			response.sendRedirect(request.getContextPath() + "/login");
 		} else {
+			try {
+				result = mdao.get();
+				System.out.println(result);
+				request.setAttribute("message", result);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			request.getRequestDispatcher("/irc.jsp").forward(request, response);
 		}
 
@@ -67,9 +79,10 @@ public class Irc extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession(true).getAttribute("user");
+		MessDAO mdao = new MessDAO();
 		
 		if(user == null) {
-			System.out.println("déviation");
+			System.out.println("3 page irc: déviation");
 			response.sendRedirect(request.getContextPath() + "/login");
 		} else {
 			String message = request.getParameter("message");
@@ -77,11 +90,18 @@ public class Irc extends HttpServlet {
 			
 			if(!message.equals("")){
 				try {
-					MessDAO mdao = new MessDAO();
 					mdao.create(message, id);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+			}
+			
+
+			try {
+				request.setAttribute("message", mdao.get());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 			request.getRequestDispatcher("/irc.jsp").forward(request, response);

@@ -23,7 +23,7 @@
 			
 			<div class="main_wrapper">
 				<% User connectedUser = (User) session.getAttribute("user"); %>
-				<%= "<h3>Bonjour, " + connectedUser.getLogin() + "</h3>"%>
+				<%= "<h3>Bonjour, " + connectedUser.getLogin() + "</h3>" %>
 				<div id="chat">
 					<div id="conversation"></div>
 					<form action="/jee_test/irc" method="post" class="formChat" id="sendMessage">
@@ -38,8 +38,8 @@
 
 
 		<script type="text/javascript" src="vendors/jquery-3.1.1.js"></script>
-		<!--<script type="text/javascript" src="assets/script/cnxJQuery.js"></script>
-		<script type="text/javascript" src="assets/script/cookie.js"></script>
+		<script type="text/javascript" src="assets/script/messenger.js"></script>
+		<!--<script type="text/javascript" src="assets/script/cookie.js"></script>
 		<script type="text/javascript" src="assets/script/global.js"></script>
 		<script type="text/javascript" src="assets/script/cnx.js"></script>-->
 	</body>
