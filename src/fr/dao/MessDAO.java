@@ -100,7 +100,7 @@ public class MessDAO extends AbstractDao<Conversations> {
 		
 		request = this.cnx.prepareStatement("INSERT INTO messenger (message, date_envoi, user_id) VALUES (?, ?, ?);");
 		request.setString(1, mess);
-		//request.setDate(2, "2016-11-07 16:54:00");
+		request.setDate(2, null);
 		request.setInt(3, id);
 		request.executeUpdate();
 		
