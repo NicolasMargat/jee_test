@@ -28,7 +28,7 @@
 						<input type="password" name="mdpCnx" id="mdpCnx" class="txtDefaut">
 						<br/>
 						<input type="submit" value="Se connecter" id="btnConnexion" class="btnEnvoyer">
-						<a href="inscription" id="sinscrire" >Je m'inscrit</a>
+						<a href="register" id="sinscrire" >Je m'inscrit</a>
 					</form>
 				</div>
 			</div>

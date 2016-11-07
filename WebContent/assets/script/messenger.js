@@ -11,29 +11,28 @@
   /*
   * Création d'objet
   */
-  var chat = {
-    token: '',
-    message: ''
+  var messages = {
+    message: '',
+    user_id: ''
   };
 
   /*
   * Fonctions
   */
   function readMessage(tabMessage) {
-    var message = '';
+    //var message = '';
 
     txtConversation.empty();
-    txtConversation.append(tabmessage);
+    //txtConversation.append(tabmessage);
 
-//    for(var i = (tabMessage.length - 30); i < tabMessage.length; i++) {
-//
-//      txtConversation.append("<br/>" + tabMessage[i].login_id + " : " + tabMessage[i].message);
-//    }
+    for(var i = (tabMessage.length - 10); i < tabMessage.length; i++) {
+        txtConversation.append("<p>" + tabMessage[i].login + " : \n\t" + tabMessage[i].message + "</p>");
+    }
   };
 
   function refresh() {
     setInterval(
-      function() {receive(chat, 'http://localhost:8080/jee_test/irc', 'get')},
+      function() {receive(messages, 'http://localhost:8080/jee_test/irc', 'get')},
       5000);
   }
 
@@ -52,13 +51,17 @@
       },
       success: function(donnees, status) {
         console.log("Le serveur a bien reçu la reqête");
-        console.log(donnees.resultDetails);
-        readMessage(donnees.resultDetails);
+        readMessage(donnees.messages);
+      },
+      error: function(donnees, status) {
+        console.log("erreur de réception");
       }
     });
   };
-  
-  
-  
+
+  setInterval(
+    function() {receive("", 'http://10.3.104.51:8080/jee_test/irc', 'get')},
+    3000);
+
 
 })(jQuery);

@@ -2,7 +2,6 @@ package fr.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -36,7 +35,7 @@ public class Irc extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession(true).getAttribute("user");
 		MessDAO mdao = new MessDAO();
-		ResultSet result = null;
+		StringBuilder result = new StringBuilder();
 		
 		if(user == null) {
 			System.out.println("2 page irc: déviation");
@@ -44,24 +43,17 @@ public class Irc extends HttpServlet {
 		} else {
 			try {
 				result = mdao.get();
-				
-				while(result.next()) {
-					System.out.println(" " + result.getString(1));
-				}
-				
 
-				response.setContentType("application/javascript");
+				//System.out.println(result);
+				response.setContentType("application/json");
 				
-				PrintWriter messages = response.getWriter();
-				
-				messages.print("{\"salut\": \"ceci est un test\"}");
-
+				response.getWriter().write(result.toString());
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			
-			request.getRequestDispatcher("/irc.jsp").forward(request, response);
+			//request.getRequestDispatcher("/irc.jsp").forward(request, response);
 		}
 
 

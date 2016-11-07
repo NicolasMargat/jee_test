@@ -27,7 +27,7 @@ public class UserDAO extends AbstractDao<User>{
 	}
 
 	@Override
-	public ResultSet get() throws SQLException {
+	public StringBuilder get() throws SQLException {
 		return null;
 	}
 
