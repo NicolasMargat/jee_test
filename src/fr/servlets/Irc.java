@@ -1,6 +1,8 @@
 package fr.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -33,7 +35,6 @@ public class Irc extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = (User) request.getSession(true).getAttribute("user");
-		System.out.println("1 page irc:" + user);
 		MessDAO mdao = new MessDAO();
 		ResultSet result = null;
 		
@@ -43,10 +44,20 @@ public class Irc extends HttpServlet {
 		} else {
 			try {
 				result = mdao.get();
-				System.out.println(result);
-				request.setAttribute("message", result);
+				
+				while(result.next()) {
+					System.out.println(" " + result.getString(1));
+				}
+				
+
+				response.setContentType("application/javascript");
+				
+				PrintWriter messages = response.getWriter();
+				
+				messages.print("{\"salut\": \"ceci est un test\"}");
+
+				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -98,6 +109,7 @@ public class Irc extends HttpServlet {
 			
 
 			try {
+				
 				request.setAttribute("message", mdao.get());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

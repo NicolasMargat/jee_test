@@ -52,9 +52,13 @@
       },
       success: function(donnees, status) {
         console.log("Le serveur a bien reçu la reqête");
+        console.log(donnees.resultDetails);
         readMessage(donnees.resultDetails);
       }
     });
   };
+  
+  
+  
 
 })(jQuery);
