@@ -31,7 +31,7 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/templates/login.jsp").forward(request, response);
 	}
 
 	/**
@@ -64,8 +64,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("user", user);
 			//session.setMaxInactiveInterval(300000);
 
-			request.getRequestDispatcher("/irc.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/templates/irc.jsp").forward(request, response);
 		}
 	}
-
 }

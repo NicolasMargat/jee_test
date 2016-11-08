@@ -3,6 +3,7 @@
 	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +18,8 @@
 	</head>
 	<body>
 		<div class="main">
-			<%@ include file="Views/header.html" %>
-			<%@ include file="Views/menu.html" %>
+			<c:import url="/layouts/header.html" />
+			<c:import url="/layouts/menu.html" />
 			
 			<div class="main_wrapper">
 				<% if(2 > 1) { out.println("Bonjour"); } %>
@@ -49,6 +50,6 @@
 			</div>
 		</div>
 
-		<%@ include file="Views/footer.html" %>
+		<c:import url="/layouts/footer.html" />
 	</body>
 </html>

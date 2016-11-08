@@ -29,7 +29,7 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/register.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/templates/register.jsp").forward(request, response);
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class Register extends HttpServlet {
 			}
 		}
 		
-		request.getRequestDispatcher("/register.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/templates/register.jsp").forward(request, response);
 	}
 
 }

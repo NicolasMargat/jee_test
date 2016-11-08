@@ -9,7 +9,7 @@ public class AccessDB {
 	private String url, login, pwd;
 
 	public AccessDB() throws SQLException{
-		this.url = "jdbc:mysql://localhost/messenger_aston";
+		this.url = "jdbc:mysql://localhost/messenger_aston?autoReconnect=true&useSSL=false";
 		this.login = "root";
 		this.pwd = "root";
 		
@@ -44,13 +44,15 @@ public class AccessDB {
 		}
 	}
 	
+	//Méthode d'ouverture de connexion
 	public Connection open() throws SQLException {
 		cnx = DriverManager.getConnection(url, login, pwd);
 		System.out.println("Connecter");
 		
 		return cnx;
 	}
-	
+
+	//Méthode de fermeture de connexion
 	public void close() {
 		try {
 			cnx.close();

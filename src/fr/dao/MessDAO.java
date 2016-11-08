@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
 
 import fr.bd.AccessDB;
 import fr.entities.Conversations;
@@ -36,16 +34,17 @@ public class MessDAO extends AbstractDao<Conversations> {
 		
 		this.cnx = adb.open();
 		
-		request = this.cnx.prepareStatement("SELECT * FROM messenger INNER JOIN user ON messenger.user_id = user.id ORDER BY messenger.id asc;");
+		request = this.cnx.prepareStatement("SELECT * FROM message INNER JOIN user ON message.user_id = user.id ORDER BY message.date_envoi asc;");
 		resultat = request.executeQuery();
 
 		messages.append("{\"messages\": [");
 		
 		while(resultat.next()) {
 			messages.append("{");
-			messages.append("\"message\": \"" + resultat.getString("message") + "\",");
-			messages.append("\"login\": \"" + resultat.getString("login") + "\"");
-			messages.append("\"date_mess\": \"" + resultat.getDate("date_envoi") + "\"");
+			messages.append("\"message\": \"" + resultat.getString("text") + "\",");
+			messages.append("\"login\": \"" + resultat.getString("login") + "\",");
+			messages.append("\"date_mess\": \"" + resultat.getDate("date_envoi") + "\",");
+			messages.append("\"heure_mess\": \"" + resultat.getTime("date_envoi") + "\"");
 			
 			if(resultat.isLast()) {
 				messages.append("}");
@@ -64,25 +63,8 @@ public class MessDAO extends AbstractDao<Conversations> {
 
 	@Override
 	public Conversations get(int id) throws SQLException {
-		PreparedStatement request = null;
-		ResultSet resultat = null;
-		Conversations message = null;
 		
-		this.cnx = adb.open();
-		
-		request = this.cnx.prepareStatement("SELECT * FROM messenger WHERE id=?");
-		request.setInt(1, id);
-		resultat = request.executeQuery();
-		
-		if(resultat.first()) {
-			message = new Conversations();
-			message.setMessage(resultat.getString("message"));
-			message.setIdUser(resultat.getInt("user_id"));
-		}
-		
-		this.adb.close();
-		
-		return message;
+		return null;
 	}
 
 	@Override
@@ -93,15 +75,12 @@ public class MessDAO extends AbstractDao<Conversations> {
 
 	public void create(String mess, int id) throws SQLException {
 		PreparedStatement request = null;
-		Date today = new Date();
-		
 		
 		this.cnx = adb.open();
 		
-		request = this.cnx.prepareStatement("INSERT INTO messenger (message, date_envoi, user_id) VALUES (?, ?, ?);");
+		request = this.cnx.prepareStatement("INSERT INTO message (text, date_envoi, user_id) VALUES (?, NOW(), ?);");
 		request.setString(1, mess);
-		request.setDate(2, null);
-		request.setInt(3, id);
+		request.setInt(2, id);
 		request.executeUpdate();
 		
 		this.adb.close();
